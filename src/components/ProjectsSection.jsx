@@ -82,7 +82,7 @@ export const ProjectsSection = () => {
                                         <a
                                             href={project.demoUrl}
                                             target="_blank"
-                                            className="hover:text-primary transition-colors duration-300"
+                                            className="text-foreground hover:text-primary transition-colors duration-300"
                                         >
                                             <ExternalLink size={20} />
                                         </a>
