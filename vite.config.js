@@ -6,7 +6,7 @@ import path from "path";
 // https://vite.dev/config/
 export default defineConfig({
     plugins: [react(), tailwindcss()],
-    base: "/React-Cosmic-Portfolio",
+    base: "/React-Cosmic-Portfolio/",
     resolve: {
         alias: {
             // eslint-disable-next-line no-undef
