@@ -1,11 +1,15 @@
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import todoImage from "../../public/projects/todoProj.png";
+import movieProjImage from "../../public/projects/movieProj.png";
+import sushiProjImage from "../../public/projects/sushiProj.png";
+import weatherProj from "../../public/projects/weatherProj.png";
 
 const projects = [
     {
         id: 1,
         title: "ToDo Project",
         description: "Not a big project. One of my first solo projects",
-        image: "/public/projects/todoProj.png",
+        image: todoImage,
         tags: ["JavaScript"],
         demoUrl: "https://badmood1.github.io/todoProject/",
         githubUrl: "https://github.com/BadMood1/todoProject",
@@ -14,7 +18,7 @@ const projects = [
         id: 1,
         title: "Sushi Project",
         description: "Similar to ToDo but more advanced.",
-        image: "/public/projects/SushiProj.png",
+        image: sushiProjImage,
         tags: ["JavaScript"],
         demoUrl: "https://badmood1.github.io/sushiPROJECT/",
         githubUrl: "https://github.com/BadMood1/sushiPROJECT",
@@ -23,7 +27,7 @@ const projects = [
         id: 1,
         title: "Weather Project",
         description: "First async project. I'm dealing with the API here",
-        image: "/public/projects/weatherProj.png",
+        image: weatherProj,
         tags: ["JavaScript", "HTML/CSS"],
         demoUrl: "https://badmood1.github.io/weatherPROJECT/",
         githubUrl: "https://github.com/BadMood1/weatherPROJECT",
@@ -32,7 +36,7 @@ const projects = [
         id: 1,
         title: "MovieSearch Project",
         description: "A really large JS project. Summing up all the knowledges here",
-        image: "/public/projects/movieProj.png",
+        image: movieProjImage,
         tags: ["JavaScript", "HTML/CSS"],
         demoUrl: "https://badmood1.github.io/sidebarPRACTICING/",
         githubUrl: "https://github.com/BadMood1/sidebarPRACTICING",

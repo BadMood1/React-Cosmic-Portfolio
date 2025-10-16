@@ -5,7 +5,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 function App() {
     return (
         <>
-            <BrowserRouter>
+            <BrowserRouter basename="/React-Cosmic-Portfolio">
                 <Routes>
                     <Route index element={<Home />} />
                     <Route path="*" element={<NotFoundPage />} />
