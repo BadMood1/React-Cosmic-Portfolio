@@ -1,16 +1,16 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
 function App() {
     return (
         <>
-            <HashRouter>
+            <BrowserRouter basename="/React-Cosmic-Portfolio">
                 <Routes>
                     <Route index element={<Home />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
-            </HashRouter>
+            </BrowserRouter>
         </>
     );
 }
