@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { cn } from "../lib/utils";
 import { X, Menu } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
+import { useTheme } from "../../hooks/useTheme";
 
 const navItems = [
     { name: "Home", href: "#hero" },
@@ -13,6 +15,7 @@ const navItems = [
 export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpened, setIsMenuOpened] = useState(false);
+    const [isDarkMode, toggleTheme] = useTheme();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -50,6 +53,7 @@ export const Navbar = () => {
                             </a>
                         );
                     })}
+                    <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
                 </div>
 
                 {/* Mobile Nav */}
@@ -64,7 +68,7 @@ export const Navbar = () => {
 
                 <div
                     className={cn(
-                        "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col",
+                        "fixed top-0 left-0 w-full h-screen bg-background/95 backdrop-blur-md z-40 flex flex-col",
                         "items-center justify-center transition-all duration-300 md:hidden",
                         isMenuOpened ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
                     )}
@@ -82,6 +86,10 @@ export const Navbar = () => {
                                 </a>
                             );
                         })}
+
+                        <div onClick={() => setIsMenuOpened(false)}>
+                            <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+                        </div>
                     </div>
                 </div>
             </div>

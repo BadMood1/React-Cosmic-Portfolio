@@ -27,9 +27,11 @@ export const HeroSection = () => {
                 </div>
             </div>
 
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce">
-                <span className="text-sm mb-2">Scroll</span>
-                <ArrowDown className="h-5 w-5 text-primary" />
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in-delay-6">
+                <div className=" flex flex-col items-center animate-bounce">
+                    <span className="text-sm mb-2">Scroll</span>
+                    <ArrowDown className="h-5 w-5 text-primary" />
+                </div>
             </div>
         </section>
     );

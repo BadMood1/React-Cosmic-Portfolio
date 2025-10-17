@@ -2,8 +2,10 @@ import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { cn } from "../lib/utils";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Loader } from "lucide-react";
+import { emailJSInfo } from "../../utils/ContactUsInfo";
+import emailjs from "@emailjs/browser";
 export const ContactSection = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showSubmitMessage, setShowSubmitMessage] = useState(false);
@@ -14,8 +16,37 @@ export const ContactSection = () => {
         message: "",
     });
 
+    const templateParams = {
+        from_name: person.name,
+        email: person.email,
+        to_name: "Мой Повелитель",
+        message: person.message,
+    };
+
+    const sendEmail = () => {
+        emailjs
+            .send(
+                emailJSInfo.serviceId,
+                emailJSInfo.templateId,
+                templateParams, // Передаем объект напрямую
+                {
+                    publicKey: emailJSInfo.publicKey,
+                }
+            )
+            .then(
+                () => {
+                    console.log("SUCCESS!");
+                },
+                (error) => {
+                    console.log("FAILED...", error.text);
+                }
+            );
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        sendEmail();
 
         setPerson({
             name: "",
@@ -112,7 +143,7 @@ export const ContactSection = () => {
                                     name="name"
                                     required
                                     className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
-                                    placeholder="Andrew Ivanov"
+                                    placeholder="User Nameovich"
                                 />
                             </div>
                             <div>
