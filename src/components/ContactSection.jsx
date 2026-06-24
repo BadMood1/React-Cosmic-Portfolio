@@ -2,7 +2,7 @@ import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { cn } from "../lib/utils";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Loader } from "lucide-react";
 import { emailJSInfo } from "../../utils/ContactUsInfo";
 import emailjs from "@emailjs/browser";
