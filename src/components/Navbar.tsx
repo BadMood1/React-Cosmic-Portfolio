@@ -4,7 +4,12 @@ import { X, Menu } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { useTheme } from "../../hooks/useTheme";
 
-const navItems = [
+type NavItem = {
+    name: string;
+    href: `#${string}`;
+};
+
+const navItems: NavItem[] = [
     { name: "Home", href: "#hero" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
@@ -30,7 +35,7 @@ export const Navbar = () => {
         <nav
             className={cn(
                 "fixed w-full z-40 transition-all duration-300 ",
-                isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+                isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5",
             )}
         >
             <div className="container flex items-center justify-between">
@@ -42,10 +47,10 @@ export const Navbar = () => {
 
                 {/* Desktop Nav */}
                 <div className="hidden md:flex space-x-8">
-                    {navItems.map((item, key) => {
+                    {navItems.map((item) => {
                         return (
                             <a
-                                key={key}
+                                key={item.href}
                                 href={item.href}
                                 className="text-foreground/80 hover:text-primary transition-colors duration-300"
                             >
@@ -70,14 +75,14 @@ export const Navbar = () => {
                     className={cn(
                         "fixed top-0 left-0 w-full h-screen bg-background/95 backdrop-blur-md z-40 flex flex-col",
                         "items-center justify-center transition-all duration-300 md:hidden",
-                        isMenuOpened ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                        isMenuOpened ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
                     )}
                 >
                     <div className="flex flex-col space-y-8 text-xl">
-                        {navItems.map((item, key) => {
+                        {navItems.map((item) => {
                             return (
                                 <a
-                                    key={key}
+                                    key={item.href}
                                     href={item.href}
                                     className="text-foreground/80 hover:text-primary transition-colors duration-300"
                                     onClick={() => setIsMenuOpened(false)}

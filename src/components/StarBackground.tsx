@@ -2,19 +2,27 @@ import { useEffect, useState } from "react";
 
 // id, size, x, y, opacity???, animationDuration
 
+type SpaceObject = {
+    id: number;
+    size: number;
+    x: number;
+    y: number;
+    animationDuration: number;
+};
+
 export const StarBackground = () => {
-    const [stars, setStars] = useState([]);
-    const [meteors, setMeteors] = useState([]);
+    const [stars, setStars] = useState<SpaceObject[]>([]);
+    const [meteors, setMeteors] = useState<SpaceObject[]>([]);
 
     useEffect(() => {
         generateStars();
         generateMeteors();
     }, []);
 
-    const generateStars = () => {
+    const generateStars = (): void => {
         const numOfStars = Math.floor((window.innerWidth * window.innerHeight) / 10000);
 
-        const newStars = [];
+        const newStars: SpaceObject[] = [];
 
         for (let i = 0; i < numOfStars; i++) {
             newStars.push({
@@ -29,10 +37,10 @@ export const StarBackground = () => {
         setStars(newStars);
     };
 
-    const generateMeteors = () => {
+    const generateMeteors = (): void => {
         const numOfMeteors = 6;
 
-        const newMeteors = [];
+        const newMeteors: SpaceObject[] = [];
 
         for (let i = 0; i < numOfMeteors; i++) {
             newMeteors.push({

@@ -4,7 +4,19 @@ import movieProjImage from "../../public/projects/movieProj.png";
 import sushiProjImage from "../../public/projects/sushiProj.png";
 import weatherProj from "../../public/projects/weatherProj.png";
 
-const projects = [
+type ProjectTag = "JavaScript" | "HTML/CSS" | "React" | "Tailwind CSS";
+
+interface Project {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    tags: ProjectTag[];
+    demoUrl: string;
+    githubUrl: string;
+}
+
+const projects: Project[] = [
     {
         id: 1,
         title: "ToDo Project",
@@ -15,7 +27,7 @@ const projects = [
         githubUrl: "https://github.com/BadMood1/todoProject",
     },
     {
-        id: 1,
+        id: 2,
         title: "Sushi Project",
         description: "Similar to ToDo but more advanced.",
         image: sushiProjImage,
@@ -24,7 +36,7 @@ const projects = [
         githubUrl: "https://github.com/BadMood1/sushiPROJECT",
     },
     {
-        id: 1,
+        id: 3,
         title: "Weather Project",
         description: "First async project. I'm dealing with the API here",
         image: weatherProj,
@@ -33,7 +45,7 @@ const projects = [
         githubUrl: "https://github.com/BadMood1/weatherPROJECT",
     },
     {
-        id: 1,
+        id: 4,
         title: "MovieSearch Project",
         description: "A really large JS project. Summing up all the knowledges here",
         image: movieProjImage,
@@ -57,9 +69,9 @@ export const ProjectsSection = () => {
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, key) => (
+                    {projects.map((project) => (
                         <div
-                            key={key}
+                            key={project.id}
                             className="bg-card group rounded-lg overflow-hidden shadow-xs card-hover"
                         >
                             <div className="h-48">

@@ -1,6 +1,15 @@
 import { useState } from "react";
 import { cn } from "../lib/utils";
-const skills = [
+
+type SkillCategory = "frontend" | "backend" | "tools";
+
+type Skill = {
+    name: string;
+    level: number;
+    category: SkillCategory;
+};
+
+const skills: Skill[] = [
     // Frontend
     { name: "HTML/CSS", level: 65, category: "frontend" },
     { name: "Javascript", level: 80, category: "frontend" },
@@ -12,13 +21,15 @@ const skills = [
     { name: "VS Code", level: 80, category: "tools" },
 ];
 
-const categories = ["all", "frontend", "backend", "tools"];
+type ActiveCategory = "all" | SkillCategory;
+
+const categories: ActiveCategory[] = ["all", "frontend", "backend", "tools"];
 
 export const SkillsSection = () => {
-    const [activeCategory, setActiveCategory] = useState("all");
+    const [activeCategory, setActiveCategory] = useState<ActiveCategory>("all");
 
     const filteredSkills = skills.filter(
-        (skill) => activeCategory === "all" || skill.category === activeCategory
+        (skill) => activeCategory === "all" || skill.category === activeCategory,
     );
     return (
         <section id="skills" className="py-24 px-4 relative ">
@@ -28,16 +39,16 @@ export const SkillsSection = () => {
                 </h2>
 
                 <div className="flex flex-wrap justify-center gap-4 mb-12">
-                    {categories.map((category, key) => (
+                    {categories.map((category) => (
                         <button
                             onClick={() => setActiveCategory(category)}
                             className={cn(
                                 "px-5 py-2 rounded-full transition-all duration-300 tracking-wide capitalize cursor-pointer border hover:scale-105 active:scale-95 ",
                                 activeCategory === category
                                     ? "bg-primary text-primary-foreground"
-                                    : "text-foreground "
+                                    : "text-foreground ",
                             )}
-                            key={key}
+                            key={category}
                         >
                             {category}
                         </button>

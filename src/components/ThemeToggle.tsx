@@ -1,7 +1,12 @@
 import { Moon, Sun } from "lucide-react";
 import { cn } from "../lib/utils";
 
-export const ThemeToggle = ({ isDarkMode, toggleTheme }) => {
+type ThemeToggleProps = {
+    isDarkMode: boolean;
+    toggleTheme: () => void;
+};
+
+export const ThemeToggle = ({ isDarkMode, toggleTheme }: ThemeToggleProps) => {
     return (
         <button
             onClick={toggleTheme}

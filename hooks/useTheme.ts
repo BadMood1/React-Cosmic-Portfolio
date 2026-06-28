@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useTheme = () => {
+export const useTheme = (): [boolean, () => void] => {
     const [isDarkMode, setIsDarkMode] = useState(true);
 
     useEffect(() => {
