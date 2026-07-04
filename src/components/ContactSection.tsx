@@ -6,24 +6,36 @@ import { useState } from "react";
 import { Loader } from "lucide-react";
 import { emailJSInfo } from "../../utils/ContactUsInfo";
 import emailjs from "@emailjs/browser";
+
+interface Person {
+    name: string;
+    email: string;
+    message: string;
+}
+
+type Template = Omit<Person, "name"> & {
+    from_name: string;
+    to_name: string;
+};
+
 export const ContactSection = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showSubmitMessage, setShowSubmitMessage] = useState(false);
 
-    const [person, setPerson] = useState({
+    const [person, setPerson] = useState<Person>({
         name: "",
         email: "",
         message: "",
     });
 
-    const templateParams = {
-        from_name: person.name,
-        email: person.email,
-        to_name: "Мой Повелитель",
-        message: person.message,
-    };
-
     const sendEmail = () => {
+        const templateParams: Template = {
+            from_name: person.name,
+            email: person.email,
+            to_name: "Мой Повелитель",
+            message: person.message,
+        };
+
         emailjs
             .send(
                 emailJSInfo.serviceId,
@@ -31,7 +43,7 @@ export const ContactSection = () => {
                 templateParams, // Передаем объект напрямую
                 {
                     publicKey: emailJSInfo.publicKey,
-                }
+                },
             )
             .then(
                 () => {
@@ -39,11 +51,11 @@ export const ContactSection = () => {
                 },
                 (error) => {
                     console.log("FAILED...", error.text);
-                }
+                },
             );
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         sendEmail();
@@ -62,7 +74,7 @@ export const ContactSection = () => {
         }, 1700);
     };
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setPerson((prev) => ({
             ...prev,
             [e.target.name]: e.target.value,

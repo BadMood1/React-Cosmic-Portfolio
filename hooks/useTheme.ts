@@ -6,7 +6,6 @@ export const useTheme = (): [boolean, () => void] => {
     useEffect(() => {
         const storedTheme = localStorage.getItem("theme");
 
-        console.log("useEffect отработал ");
         // Если тема сохранена - используем её, иначе ставим темную
         if (storedTheme === "light") {
             setIsDarkMode(false);
